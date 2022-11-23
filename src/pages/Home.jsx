@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import useUserCalls from "../hooks/useUserCalls";
-//import { useSelector } from "react-redux";
 import UserTable from "../component/UserTable";
-
-//import useUserCalls from "../hooks/useUserCall";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const { getUsers, getPosts } = useUserCalls();
-  // const { user } = useSelector((state) => state.user);
+  const { users } = useSelector((state) => state.user);
 
   useEffect(() => {
     getUsers();
@@ -24,12 +22,15 @@ const Home = () => {
             <th>username</th>
             <th>email</th>
             <th>address</th>
+            <th>phone</th>
+            <th>website</th>
+            <th>company</th>
           </tr>
         </thead>
         <tbody>
-          {/* {data.map((item) => (
+          {users?.map((item) => (
             <UserTable key={item.id} item={item} />
-          ))} */}
+          ))}
         </tbody>
       </table>
       <UserTable />
