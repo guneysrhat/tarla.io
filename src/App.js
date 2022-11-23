@@ -1,12 +1,15 @@
 import { Provider } from "react-redux";
 import store from "./app/store";
-import UserTable from "./component/UserTable";
+
+import AppRouter from "./router/AppRouter";
 
 function App() {
   return (
-    <Provider store={store}>
-      <UserTable />
-    </Provider>
+    <>
+      <Provider store={store}>
+        <AppRouter />
+      </Provider>
+    </>
   );
 }
 
