@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { fetchFail, fetchStart, getSuccess } from "../features/userSlice";
 import useAxios from "./useAxios";
@@ -11,7 +10,7 @@ const useUserCall = () => {
   const getUserData = async () => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosPublic.get("/users");
+      const { data } = await axiosPublic.get("users/");
       dispatch(getSuccess({ data }));
     } catch (error) {
       dispatch(fetchFail());
@@ -19,7 +18,7 @@ const useUserCall = () => {
     }
   };
 
-  const getUser = () => getUserData("firms");
+  const getUser = () => getUserData();
 
   return { getUser };
 };
