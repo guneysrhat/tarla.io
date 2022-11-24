@@ -1,5 +1,6 @@
 import * as React from "react";
 
+
 export default function UserTable({ item }) {
   return (
     <>
@@ -14,7 +15,6 @@ export default function UserTable({ item }) {
         <td>{item?.phone}</td>
         <td>{item?.website}</td>
         <td>{item?.company?.name}</td>
-        
       </tr>
     </>
   );
