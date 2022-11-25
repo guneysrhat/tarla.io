@@ -12,18 +12,8 @@ import * as React from "react";
 import { useState } from "react";
 
 const UserTable = ({ users }) => {
-  const [isChecked, setIsChecked] = useState([]);
-  const handleCheckBox = (e) => {
-    const { id, value, checked } = e.target;
-    //console.log(value);
-    if (checked) {
-      setIsChecked([...isChecked, id, value]);
-    } else {
-      setIsChecked(isChecked.filter((e) => e !== id, value));
-    }
-    console.log(isChecked);
-  };
-
+  const [checkedUser, setCheckedUser] = useState([]);
+  console.log(checkedUser);
   return (
     <TableContainer component={Paper} sx={{ mt: 3 }} elevation={10}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -50,10 +40,9 @@ const UserTable = ({ users }) => {
             >
               <TableCell align="center">
                 <Checkbox
-                  id={item?.id}
+                  onChange={(item) => setCheckedUser(item)}
                   value={item?.address?.geo?.lat}
-                  checked={item.isChecked}
-                  onChange={(e) => handleCheckBox(e)}
+                  inputProps={{ "aria-label": "controlled" }}
                 />
               </TableCell>
               <TableCell align="center" component="th" scope="row">
@@ -67,10 +56,8 @@ const UserTable = ({ users }) => {
               <TableCell align="center">{item?.website}</TableCell>
               <TableCell align="center">{item?.company?.name}</TableCell>
               <TableCell align="center">
-                {item?.address?.street}
-                {item?.address?.suite}
-                {item?.address?.city}
-                {item?.address?.zipcode}
+                {item?.address?.street} {item?.address?.suite}{" "}
+                {item?.address?.city} {item?.address?.zipcode}
               </TableCell>
             </TableRow>
           ))}

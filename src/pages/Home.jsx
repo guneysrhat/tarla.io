@@ -3,6 +3,7 @@ import useUserCalls from "../hooks/useUserCalls";
 import UserTable from "../component/UserTable";
 import { useSelector } from "react-redux";
 import { Box, Typography } from "@mui/material";
+import LocationMap from "../component/LocationMap";
 
 const Home = () => {
   const { getUsers, getPosts } = useUserCalls();
@@ -14,6 +15,7 @@ const Home = () => {
   }, []);
   return (
     <>
+      <LocationMap />
       <Box>
         <Typography variant="h4" color="error" mb={4}>
           User Table
