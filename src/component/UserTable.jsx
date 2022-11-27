@@ -12,7 +12,7 @@ import {
 import * as React from "react";
 import { useState } from "react";
 
-const UserTable = ({ users, handleChange, post }) => {
+const UserTable = ({ users, handleChange }) => {
   //!----------------------- kulaniliyor-----------------
   // const [checkedUser, setCheckedUser] = useState(false);
   // const [userInfo, setUserInfo] = useState({

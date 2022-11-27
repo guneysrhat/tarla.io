@@ -2,34 +2,35 @@ import React from "react";
 import { DonutChart } from "@tremor/react";
 import { Card, Typography } from "@mui/material";
 
-const UserChart = () => {
+const UserChart = ({ posts }) => {
+  // const post = { posts };
   const cities = [
     {
-      name: "New York",
-      sales: 9800,
+      sehir: "New York",
+      ucret: 9800,
     },
     {
-      name: "London",
-      sales: 4567,
+      sehir: "London",
+      ucret: 4567,
     },
     {
-      name: "Hong Kong",
-      sales: 3908,
+      sehir: "Hong Kong",
+      ucret: 3908,
     },
     {
-      name: "San Francisco",
-      sales: 2400,
+      sehir: "San Francisco",
+      ucret: 2400,
     },
     {
-      name: "Singapore",
-      sales: 1908,
+      sehir: "Singapore",
+      ucret: 1908,
     },
     {
-      name: "Zurich",
-      sales: 1398,
+      sehir: "Zurich",
+      ucret: 1398,
     },
   ];
-
+  console.log(posts);
   const valueFormatter = (number) =>
     `$ ${Intl.NumberFormat("us").format(number).toString()}`;
   return (
@@ -37,8 +38,8 @@ const UserChart = () => {
       <Typography>Sales by City</Typography>
       <DonutChart
         data={cities}
-        category="sales"
-        dataKey="name"
+        category="ucret"
+        dataKey="sehir"
         valueFormatter={valueFormatter}
         marginTop="mt-6"
         height="h-80"

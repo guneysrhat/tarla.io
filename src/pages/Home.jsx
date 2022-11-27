@@ -8,8 +8,8 @@ import UserChart from "../component/UserChart";
 
 const Home = () => {
   const { getUsers, getPosts } = useUserCalls();
-  const { users } = useSelector((state) => state.user);
-  const { post } = useSelector((state) => state.post);
+  const { users, posts } = useSelector((state) => state.user);
+
   const [userInfo, setUserInfo] = useState([
     {
       id: "",
@@ -19,11 +19,21 @@ const Home = () => {
     },
   ]);
 
-  const [userPost, setUserPost] = useState([]);
+  const [userPost, setUserPost] = useState([
+    {
+      UserId: "",
+      numberOfPost: "",
+    },
+  ]);
 
   const handleChange = (e) => {
     let updatedList = [...userInfo];
+    let updatedPost = [...posts];
 
+    const userPost = {
+      UserId: "",
+      numberOfPost: "",
+    };
     const newUser = {
       id: e.target.value,
       lat: e.target.getAttribute("data_lat"),
@@ -37,6 +47,7 @@ const Home = () => {
       updatedList.splice(userInfo.indexOf(newUser), 1);
     }
     setUserInfo(updatedList);
+    console.log(updatedPost);
   };
 
   useEffect(() => {
@@ -57,7 +68,7 @@ const Home = () => {
         <Typography variant="h4" color="error" mb={4}>
           Chart
         </Typography>
-        <UserChart />
+        <UserChart posts={posts} />
       </Box>
 
       <Box>
@@ -65,7 +76,7 @@ const Home = () => {
           User Table
         </Typography>
 
-        <UserTable users={users} handleChange={handleChange} post={post} />
+        <UserTable users={users} handleChange={handleChange} />
       </Box>
     </>
   );
