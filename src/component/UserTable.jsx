@@ -1,5 +1,6 @@
 import {
   Checkbox,
+  FormControlLabel,
   Paper,
   Table,
   TableBody,
@@ -11,9 +12,38 @@ import {
 import * as React from "react";
 import { useState } from "react";
 
-const UserTable = ({ users }) => {
-  const [checkedUser, setCheckedUser] = useState([]);
-  console.log(checkedUser);
+const UserTable = ({ users, handleChange, post }) => {
+  //!----------------------- kulaniliyor-----------------
+  // const [checkedUser, setCheckedUser] = useState(false);
+  // const [userInfo, setUserInfo] = useState({
+  //   id: "",
+  //   lat: "",
+  //   lng: "",
+  //   checked: false,
+  // });
+  //!----------------------- kulaniliyor-----------------
+
+  //!----------------------- kulaniliyor-----------------
+  // const handleChange = (e) => {
+  //   setUserInfo({
+  //     id: e.target.value,
+  //     lat: e.target.getAttribute("data_lat"),
+  //     lng: e.target.getAttribute("data_lng"),
+  //     checked: e.target.checked,
+  //   });
+  // };
+  //!----------------------- kulaniliyor-----------------
+  // const handleChange = (e) => {
+  //   const index = checkedUser.indexOf(e.target.value);
+  //   if (index === -1) {
+  //     setCheckedUser([...checkedUser, e.target.value]);
+  //   } else {
+  //     setCheckedUser(
+  //       checkedUser.filter((checkedUser) => checkedUser !== e.target.value)
+  //     );
+  //   }
+  // };
+
   return (
     <TableContainer component={Paper} sx={{ mt: 3 }} elevation={10}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -39,11 +69,14 @@ const UserTable = ({ users }) => {
               key={item.id}
             >
               <TableCell align="center">
-                <Checkbox
-                  onChange={(item) => setCheckedUser(item)}
-                  value={item?.address?.geo?.lat}
-                  inputProps={{ "aria-label": "controlled" }}
-                />
+                <input
+                  onChange={handleChange}
+                  value={item?.id}
+                  data_lat={item?.address?.geo?.lat}
+                  data_lng={item?.address?.geo?.lng}
+                  data_name={item?.name}
+                  type="checkbox"
+                ></input>
               </TableCell>
               <TableCell align="center" component="th" scope="row">
                 {item?.id}
