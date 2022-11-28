@@ -70,7 +70,7 @@ const UserTable = ({ users, handleChange }) => {
             >
               <TableCell align="center">
                 <input
-                  onChange={handleChange}
+                  onChange={(e) => handleChange(e)}
                   value={item?.id}
                   data_lat={item?.address?.geo?.lat}
                   data_lng={item?.address?.geo?.lng}

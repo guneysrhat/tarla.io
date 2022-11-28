@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useUserCalls from "../hooks/useUserCalls";
-import UserTable from "../component/UserTable";
+import UserTable from "../components/UserTable/UserTable";
 import { useSelector } from "react-redux";
 import { Box, Typography } from "@mui/material";
-import LocationMap from "../component/LocationMap";
-import UserChart from "../component/UserChart";
+import LocationMap from "../components/LocationsMap/LocationMap";
+import UserChart from "../components/UserChart/UserChart";
 
 const Home = () => {
   const { getUsers, getPosts } = useUserCalls();
@@ -22,17 +22,24 @@ const Home = () => {
   const [userPost, setUserPost] = useState([
     {
       userId: "",
+      userPostCount: 0,
+      name: "",
     },
   ]);
-
+  console.log(userPost);
   const handleChange = (e) => {
     let updatedList = [...userInfo];
     let updatedPost = [...userPost];
 
-    // const newPost = getPosts(e.target.value);
+    getPosts(e.target.value);
+
     const newPost = {
       userId: e.target.value,
+      userPostCount: posts.length,
+      name: e.target.getAttribute("data_name"),
     };
+
+    console.log(newPost);
     const newUser = {
       id: e.target.value,
       lat: e.target.getAttribute("data_lat"),
@@ -46,7 +53,6 @@ const Home = () => {
       setUserPost(updatedPost);
       setUserInfo(updatedList);
     } else {
-      // updatedList.splice(userInfo.indexOf(newUser), 1);
       const userFilter = updatedList.filter(
         (item) => item.id !== e.target.value
       );
