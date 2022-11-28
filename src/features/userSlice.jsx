@@ -4,27 +4,6 @@ const userSlice = createSlice({
   name: "user",
 
   initialState: {
-    // id: null,
-    // name: null,
-    // username: null,
-    // email: null,
-    // address: {
-    //   street: null,
-    //   suite: null,
-    //   city: null,
-    //   zipcode: null,
-    //   geo: {
-    //     lat: null,
-    //     lng: null,
-    //   },
-    // },
-    // phone: null,
-    // website: null,
-    // company: {
-    //   name: null,
-    //   catchPhrase: null,
-    //   bs: null
-    // },
     post: null,
     users: null,
     loading: false,
@@ -39,6 +18,7 @@ const userSlice = createSlice({
       state[url] = data;
       state.loading = false;
     },
+
     fetchFail: (state) => {
       state.loading = false;
       state.error = true;

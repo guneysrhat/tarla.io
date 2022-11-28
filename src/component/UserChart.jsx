@@ -2,7 +2,7 @@ import React from "react";
 import { DonutChart } from "@tremor/react";
 import { Card, Typography } from "@mui/material";
 
-const UserChart = ({ posts }) => {
+const UserChart = ({ posts, userPost }) => {
   // const post = { posts };
   const cities = [
     {
@@ -30,11 +30,11 @@ const UserChart = ({ posts }) => {
       ucret: 1398,
     },
   ];
-  console.log(posts);
+  console.log(userPost);
   const valueFormatter = (number) =>
     `$ ${Intl.NumberFormat("us").format(number).toString()}`;
   return (
-    <Card maxWidth="max-w-lg">
+    <Card>
       <Typography>Sales by City</Typography>
       <DonutChart
         data={cities}

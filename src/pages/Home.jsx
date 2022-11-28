@@ -21,18 +21,17 @@ const Home = () => {
 
   const [userPost, setUserPost] = useState([
     {
-      UserId: "",
-      numberOfPost: "",
+      userId: "",
     },
   ]);
 
   const handleChange = (e) => {
     let updatedList = [...userInfo];
-    let updatedPost = [...posts];
+    let updatedPost = [...userPost];
 
-    const userPost = {
-      UserId: "",
-      numberOfPost: "",
+    // const newPost = getPosts(e.target.value);
+    const newPost = {
+      userId: e.target.value,
     };
     const newUser = {
       id: e.target.value,
@@ -43,11 +42,21 @@ const Home = () => {
 
     if (e.target.checked) {
       updatedList = [...userInfo, newUser];
+      updatedPost = [...userPost, newPost];
+      setUserPost(updatedPost);
+      setUserInfo(updatedList);
     } else {
-      updatedList.splice(userInfo.indexOf(newUser), 1);
+      // updatedList.splice(userInfo.indexOf(newUser), 1);
+      const userFilter = updatedList.filter(
+        (item) => item.id !== e.target.value
+      );
+
+      const postFilter = updatedPost.filter(
+        (item) => item.userId !== e.target.value
+      );
+      setUserPost(postFilter);
+      setUserInfo(userFilter);
     }
-    setUserInfo(updatedList);
-    console.log(updatedPost);
   };
 
   useEffect(() => {
@@ -68,7 +77,7 @@ const Home = () => {
         <Typography variant="h4" color="error" mb={4}>
           Chart
         </Typography>
-        <UserChart posts={posts} />
+        <UserChart posts={posts} userPost={userPost} />
       </Box>
 
       <Box>

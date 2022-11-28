@@ -9,7 +9,7 @@ const useUserCalls = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosPublic.get(`${url}/`);
-      console.log(data);
+      //console.log(data);
       dispatch(getSuccess({ data, url }));
     } catch (error) {
       dispatch(fetchFail());
@@ -17,8 +17,18 @@ const useUserCalls = () => {
     }
   };
 
+  const getPost = async (id, url) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosPublic.get(`${url}?userId=${id}`);
+      dispatch(getSuccess({ data, url }));
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+  };
+  const getPosts = (id) => getPost(id, "posts");
   const getUsers = () => getData("users");
-  const getPosts = () => getData("posts");
   return { getUsers, getPosts };
 };
 
