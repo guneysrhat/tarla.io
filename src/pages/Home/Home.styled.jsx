@@ -28,7 +28,7 @@ export const Card = styled(Flex)`
 
 export const CardTable = styled(Flex)`
   flex-direction: column;
-  height: 50rem;
+  height: 45rem;
   width: 90%;
   background: ${({ theme }) => theme.colors.cardBgColor};
   padding: 0.5rem;
