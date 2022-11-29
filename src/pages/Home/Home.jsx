@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import useUserCalls from "../hooks/useUserCalls";
-import UserTable from "../components/UserTable/UserTable";
+import useUserCalls from "../../hooks/useUserCalls";
+import UserTable from "../../components/UserTable/UserTable";
 import { useSelector } from "react-redux";
-import { Box, Typography } from "@mui/material";
-import LocationMap from "../components/LocationsMap/LocationMap";
-import UserChart from "../components/UserChart/UserChart";
+
+import LocationMap from "../../components/LocationsMap/LocationMap";
+import UserChart from "../../components/UserChart/UserChart";
+import { Card, CardTable, Header, MainContainer } from "./Home.styled";
 
 const Home = () => {
   const { getUsers, getPosts } = useUserCalls();
@@ -14,10 +15,7 @@ const Home = () => {
 
   const [userPost, setUserPost] = useState([]);
 
-
-
   const handleChange = (e) => {
-
     let updatedList = [...userInfo];
     let updatedPost = [...userPost];
 
@@ -62,28 +60,30 @@ const Home = () => {
   }, []);
   return (
     <>
-      <Box>
-        <Typography variant="h4" color="error" mb={4}>
-          Maps
-        </Typography>
-        <LocationMap
-          users={users}
-          userInfo={userInfo}
-          setUserInfo={setUserInfo}
-        />
-        <Typography variant="h4" color="error" mb={4}>
-          Chart
-        </Typography>
-        <UserChart posts={posts} userPost={userPost} />
-      </Box>
+      <MainContainer wrap="wrap">
+        <Card>
+          <Header>Maps</Header>
+          <LocationMap
+            users={users}
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
+          />
+        </Card>
 
-      <Box>
-        <Typography variant="h4" color="error" mb={4}>
-          User Table
-        </Typography>
+        <Card>
+          <Header>Chart</Header>
+          <UserChart posts={posts} userPost={userPost} />
+        </Card>
+      </MainContainer>
 
-        <UserTable users={users} handleChange={handleChange} />
-      </Box>
+      <MainContainer wrap="wrap">
+        <CardTable>
+          <Header variant="h4" color="error" mb={4}>
+            User Table
+          </Header>
+          <UserTable users={users} handleChange={handleChange} />
+        </CardTable>
+      </MainContainer>
     </>
   );
 };

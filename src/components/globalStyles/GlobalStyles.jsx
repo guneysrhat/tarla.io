@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
         font-family: "Girassol",cursive;
     }
     body{
-        font-size: 1.5rem;
+        font-size: 1rem;
         background:${({ theme }) => theme.colors.mainColor}
     }
 

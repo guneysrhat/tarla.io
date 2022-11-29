@@ -1,20 +1,19 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
+import { Map } from "./LocationMap.style";
 
 const Marker = ({ children }) => children;
 
 const LocationMap = ({ userInfo }) => {
-
-
   return (
-    <div style={{ height: " 50vh", width: "50% " }}>
+    <Map>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
-        defaultCenter={{ lat: 52.6376, lng: -1.135171 }}
+        defaultCenter={{ lat: 39.925533, lng: 32.866287 }}
         defaultZoom={5}
       >
         {userInfo?.map((user) => (
-           <Marker key={user?.id} lat={user?.lat} lng={user?.lng}>
+          <Marker key={user?.id} lat={user?.lat} lng={user?.lng}>
             <div>
               <img
                 src="/location-svgrepo-com.svg"
@@ -26,7 +25,7 @@ const LocationMap = ({ userInfo }) => {
           </Marker>
         ))}
       </GoogleMapReact>
-    </div>
+    </Map>
   );
 };
 

@@ -1,57 +1,21 @@
+import * as React from "react";
 import {
-  Checkbox,
-  FormControlLabel,
-  Paper,
+  Container,
   Table,
   TableBody,
+  TableBodyRow,
   TableCell,
-  TableContainer,
   TableHead,
   TableRow,
-} from "@mui/material";
-import * as React from "react";
-import { useState } from "react";
+} from "./UserTable.style";
 
 const UserTable = ({ users, handleChange }) => {
-  //!----------------------- kulaniliyor-----------------
-  // const [checkedUser, setCheckedUser] = useState(false);
-  // const [userInfo, setUserInfo] = useState({
-  //   id: "",
-  //   lat: "",
-  //   lng: "",
-  //   checked: false,
-  // });
-  //!----------------------- kulaniliyor-----------------
-
-  //!----------------------- kulaniliyor-----------------
-  // const handleChange = (e) => {
-  //   setUserInfo({
-  //     id: e.target.value,
-  //     lat: e.target.getAttribute("data_lat"),
-  //     lng: e.target.getAttribute("data_lng"),
-  //     checked: e.target.checked,
-  //   });
-  // };
-  //!----------------------- kulaniliyor-----------------
-  // const handleChange = (e) => {
-  //   const index = checkedUser.indexOf(e.target.value);
-  //   if (index === -1) {
-  //     setCheckedUser([...checkedUser, e.target.value]);
-  //   } else {
-  //     setCheckedUser(
-  //       checkedUser.filter((checkedUser) => checkedUser !== e.target.value)
-  //     );
-  //   }
-  // };
-
   return (
-    <TableContainer component={Paper} sx={{ mt: 3 }} elevation={10}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <Container>
+      <Table>
         <TableHead>
           <TableRow>
-            <TableCell align="center">
-              <Checkbox />
-            </TableCell>
+            <TableCell></TableCell>
             <TableCell align="center">#</TableCell>
             <TableCell align="center">username</TableCell>
             <TableCell align="center">name</TableCell>
@@ -64,7 +28,7 @@ const UserTable = ({ users, handleChange }) => {
         </TableHead>
         <TableBody>
           {users?.map((item) => (
-            <TableRow
+            <TableBodyRow
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               key={item.id}
             >
@@ -92,11 +56,11 @@ const UserTable = ({ users, handleChange }) => {
                 {item?.address?.street} {item?.address?.suite}{" "}
                 {item?.address?.city} {item?.address?.zipcode}
               </TableCell>
-            </TableRow>
+            </TableBodyRow>
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+    </Container>
   );
 };
 export default UserTable;
