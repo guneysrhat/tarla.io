@@ -3,8 +3,8 @@ import GoogleMapReact from "google-map-react";
 
 const Marker = ({ children }) => children;
 
-const LocationMap = ({ userInfo, users }) => {
-  console.log(userInfo);
+const LocationMap = ({ userInfo }) => {
+
 
   return (
     <div style={{ height: " 50vh", width: "50% " }}>

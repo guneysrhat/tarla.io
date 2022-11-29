@@ -16,18 +16,14 @@ const Home = () => {
 
 
 
-  console.log(posts);
-  console.log(userPost);
   const handleChange = (e) => {
+
     let updatedList = [...userInfo];
     let updatedPost = [...userPost];
 
-
-
     const postFilterCount = posts.filter(
-      (item) => item.userId == e.target.value
+      (item) => String(item.userId) === String(e.target.value)
     );
-    console.log(postFilterCount);
 
     const newPost = {
       userId: e.target.value,
@@ -35,7 +31,6 @@ const Home = () => {
       name: e.target.getAttribute("data_name"),
     };
 
-    console.log(newPost);
     const newUser = {
       id: e.target.value,
       lat: e.target.getAttribute("data_lat"),
