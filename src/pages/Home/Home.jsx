@@ -57,7 +57,7 @@ const Home = () => {
   useEffect(() => {
     getUsers();
     getPosts();
-  }, []);
+  }, [getPosts, getUsers]);
   return (
     <>
       <MainContainer wrap="wrap">

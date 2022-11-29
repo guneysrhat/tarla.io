@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Flex from "../globalStyles/Flex.style";
+
 
 export const Container = styled.div`
   background-color: #fff;

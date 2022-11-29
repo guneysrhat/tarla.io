@@ -3,11 +3,10 @@ import { DonutChart } from "@tremor/react";
 
 const UserChart = ({ userPost }) => {
   const valueFormatter = (number) =>
-    `${Intl.NumberFormat("us").format(number)} ` == 0
+    Number(`${Intl.NumberFormat("us").format(number)} `) === 0
       ? "No Data Selected "
-      : `${Intl.NumberFormat("us").format(number)} `;
+      : Number(`${Intl.NumberFormat("us").format(number)} `);
 
-  const value = valueFormatter == 0 ? "No Data" : valueFormatter;
   return (
     <>
       <DonutChart
