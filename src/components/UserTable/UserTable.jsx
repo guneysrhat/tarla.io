@@ -16,23 +16,22 @@ const UserTable = ({ users, handleChange }) => {
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell align="center">#</TableCell>
-            <TableCell align="center">username</TableCell>
-            <TableCell align="center">name</TableCell>
-            <TableCell align="center">email</TableCell>
-            <TableCell align="center">phone</TableCell>
-            <TableCell align="center">website</TableCell>
-            <TableCell align="center">company</TableCell>
-            <TableCell align="center">address</TableCell>
+            <TableCell >#</TableCell>
+            <TableCell >Username</TableCell>
+            <TableCell >Name</TableCell>
+            <TableCell >Email</TableCell>
+            <TableCell >Phone</TableCell>
+            <TableCell >Website</TableCell>
+            <TableCell >Company</TableCell>
+            <TableCell >Address</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {users?.map((item) => (
             <TableBodyRow
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               key={item.id}
             >
-              <TableCell align="center">
+              <TableCell >
                 <input
                   onChange={(e) => handleChange(e)}
                   value={item?.id}
@@ -42,17 +41,17 @@ const UserTable = ({ users, handleChange }) => {
                   type="checkbox"
                 ></input>
               </TableCell>
-              <TableCell align="center" component="th" scope="row">
+              <TableCell >
                 {item?.id}
               </TableCell>
-              <TableCell align="center">{item?.username}</TableCell>
+              <TableCell >{item?.username}</TableCell>
 
-              <TableCell align="center">{item?.name}</TableCell>
-              <TableCell align="center">{item?.email}</TableCell>
-              <TableCell align="center">{item?.phone}</TableCell>
-              <TableCell align="center">{item?.website}</TableCell>
-              <TableCell align="center">{item?.company?.name}</TableCell>
-              <TableCell align="center">
+              <TableCell >{item?.name}</TableCell>
+              <TableCell >{item?.email}</TableCell>
+              <TableCell >{item?.phone}</TableCell>
+              <TableCell >{item?.website}</TableCell>
+              <TableCell >{item?.company?.name}</TableCell>
+              <TableCell >
                 {item?.address?.street} {item?.address?.suite}{" "}
                 {item?.address?.city} {item?.address?.zipcode}
               </TableCell>
