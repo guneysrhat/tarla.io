@@ -10,32 +10,28 @@ const Home = () => {
   const { getUsers, getPosts } = useUserCalls();
   const { users, posts } = useSelector((state) => state.user);
 
-  const [userInfo, setUserInfo] = useState([
-    {
-      id: "",
-      lat: "",
-      lng: "",
-      name: "",
-    },
-  ]);
+  const [userInfo, setUserInfo] = useState([]);
 
-  const [userPost, setUserPost] = useState([
-    {
-      userId: "",
-      userPostCount: 0,
-      name: "",
-    },
-  ]);
+  const [userPost, setUserPost] = useState([]);
+
+
+
+  console.log(posts);
   console.log(userPost);
   const handleChange = (e) => {
     let updatedList = [...userInfo];
     let updatedPost = [...userPost];
 
-    getPosts(e.target.value);
+
+
+    const postFilterCount = posts.filter(
+      (item) => item.userId == e.target.value
+    );
+    console.log(postFilterCount);
 
     const newPost = {
       userId: e.target.value,
-      userPostCount: posts.length,
+      userPostCount: postFilterCount.length,
       name: e.target.getAttribute("data_name"),
     };
 

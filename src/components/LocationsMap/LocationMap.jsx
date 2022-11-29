@@ -14,7 +14,7 @@ const LocationMap = ({ userInfo, users }) => {
         defaultZoom={5}
       >
         {userInfo?.map((user) => (
-          <Marker key={user?.id} lat={user?.lat} lng={user?.lng}>
+           <Marker key={user?.id} lat={user?.lat} lng={user?.lng}>
             <div>
               <img
                 src="/location-svgrepo-com.svg"

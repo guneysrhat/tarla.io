@@ -17,17 +17,18 @@ const useUserCalls = () => {
     }
   };
 
-  const getPost = async (id, url) => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axiosPublic.get(`${url}?userId=${id}`);
-      dispatch(getSuccess({ data, url }));
-    } catch (error) {
-      dispatch(fetchFail());
-      console.log(error);
-    }
-  };
-  const getPosts = (id) => getPost(id, "posts");
+  // const getPost = async (id, url) => {
+  //   dispatch(fetchStart());
+  //   try {
+  //     const { data } = await axiosPublic.get(`${url}?userId=${id}`);
+  //     dispatch(getSuccess({ data, url }));
+  //   } catch (error) {
+  //     dispatch(fetchFail());
+  //     console.log(error);
+  //   }
+  // };
+  // const getPosts = (id) => getPost(id, "posts");
+  const getPosts = () => getData("posts");
   const getUsers = () => getData("users");
   return { getUsers, getPosts };
 };

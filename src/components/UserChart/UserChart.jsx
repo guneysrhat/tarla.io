@@ -1,6 +1,7 @@
 import React from "react";
 import { DonutChart } from "@tremor/react";
-import { Card, Typography } from "@mui/material";
+import { Container, Title } from "./UserChart.style";
+
 
 const UserChart = ({ posts, userPost }) => {
   
@@ -9,8 +10,8 @@ const UserChart = ({ posts, userPost }) => {
   const valueFormatter = (number) =>
     ` ${Intl.NumberFormat("us").format(number)}`;
   return (
-    <Card>
-      <Typography>Sales by City</Typography>
+    <Container>
+      <Title>Sales by City</Title>
       <DonutChart
         data={userPost}
         category="userPostCount"
@@ -20,7 +21,7 @@ const UserChart = ({ posts, userPost }) => {
         height="h-80"
         colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
       />
-    </Card>
+    </Container>
   );
 };
 
